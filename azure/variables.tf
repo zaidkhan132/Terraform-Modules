@@ -1,8 +1,17 @@
-variable "cluster_name" {}
-variable "location" {
-  default = "East US"
+variable "cluster_name" {
+  description = "Cluster name for resources"
+  type        = string
 }
+ 
+variable "location" {
+  description = "Azure region"
+  type        = string
+  default     = "East US"
+}
+ 
 variable "num_nodes" {
-  default = 1
+  description = "Number of VMs to create"
+  type        = number
+  default     = 1
 }
  
