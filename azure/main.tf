@@ -27,10 +27,10 @@ resource "azurerm_storage_container" "tfstate" {
 }
  
 module "vm_cluster" {
-  source        = "./modules/vm"
-  cluster_name  = var.cluster_name
-  location      = var.location
+  source         = "../modules/vm"
+  cluster_name   = var.cluster_name
+  location       = var.location
   resource_group = azurerm_resource_group.rg.name
-  node_count    = var.num_nodes
+  node_count     = var.num_nodes
 }
  
