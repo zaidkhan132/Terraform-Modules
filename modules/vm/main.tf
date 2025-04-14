@@ -12,14 +12,14 @@ resource "azurerm_virtual_network" "vnet" {
 }
  
 resource "azurerm_subnet" "subnet" {
-  name                 = "default"
+  name                 = "${var.cluster_name}-subnet"
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
  
 resource "azurerm_network_interface" "nic" {
-  count               = var.num_nodes
+  count               = var.node_count
   name                = "${var.cluster_name}-nic-${count.index}"
   location            = var.location
   resource_group_name = var.resource_group
@@ -32,18 +32,18 @@ resource "azurerm_network_interface" "nic" {
 }
  
 resource "azurerm_linux_virtual_machine" "vm" {
-  count               = var.num_nodes
+  count               = var.node_count
   name                = "${var.cluster_name}-vm-${count.index}"
   resource_group_name = var.resource_group
   location            = var.location
   size                = "Standard_B1s"
   admin_username      = "azureuser"
-  network_interface_ids = [
-    azurerm_network_interface.nic[count.index].id
-  ]
-  admin_password = "P@ssword1234!" # use Key Vault in real setup
+  network_interface_ids = [azurerm_network_interface.nic[count.index].id]
+  disable_password_authentication = false
+  admin_password = "P@ssw0rd1234!"
  
   os_disk {
+    name                 = "${var.cluster_name}-osdisk-${count.index}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
