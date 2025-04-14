@@ -30,6 +30,6 @@ module "vm_cluster" {
   cluster_name   = var.cluster_name
   location       = var.location
   resource_group = azurerm_resource_group.rg.name
-  node_count     = var.num_nodes
+  node_count     = var.node_count
 }
  
