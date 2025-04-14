@@ -25,11 +25,4 @@ resource "azurerm_storage_container" "tfstate" {
   container_access_type = "private"
 }
  
-module "vm_cluster" {
-  source         = "../"
-  cluster_name   = var.cluster_name
-  location       = var.location
-  resource_group = azurerm_resource_group.rg.name
-  
-}
  
