@@ -9,9 +9,8 @@ variable "location" {
   default     = "East US"
 }
  
-variable "num_nodes" {
-  description = "Number of VMs to create"
+variable "node_count" {
+  description = "Number of nodes to deploy"
   type        = number
-  default     = 1
 }
  
