@@ -6,7 +6,6 @@ provider "azurerm" {
   tenant_id       = "c10f8df0-e818-4423-b387-68ce113e39cc"
   subscription_id = "03eddb61-8398-483b-9327-8dc016e1af21"
 }
- 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.cluster_name}-rg"
   location = var.location
