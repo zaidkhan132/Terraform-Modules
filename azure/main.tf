@@ -1,10 +1,10 @@
 provider "azurerm" {
   features {}
- 
-  client_id       = "0e1ba460-1ab8-4a2d-9244-54332e376fde"
-  client_secret   = "4LD8Q~IyP5NsQYkMM0~5tiGxebLl8~1TocTm~dtD"
-  tenant_id       = "c10f8df0-e818-4423-b387-68ce113e39cc"
-  subscription_id = "03eddb61-8398-483b-9327-8dc016e1af21"
+
+ ARM_CLIENT_ID="0e1ba460-1ab8-4a2d-9244-54332e376fde"
+ ARM_CLIENT_SECRET="4LD8Q~IyP5NsQYkMM0~5tiGxebLl8~1TocTm~dtD"
+ ARM_SUBSCRIPTION_ID="03eddb61-8398-483b-9327-8dc016e1af21"
+ ARM_TENANT_ID="c10f8df0-e818-4423-b387-68ce113e39cc"
 }
 resource "azurerm_resource_group" "rg" {
   name     = "${var.cluster_name}-rg"
